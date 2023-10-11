@@ -9,7 +9,7 @@ const shortDate = (date: any) => {
 }
 
 // Function to fetch token price data from CoinMarketCap API
-const fetchTokenPriceDataCoinMarketcap = async () => {
+const fetchTokenData = async () => {
     const apiKey = process.env.API_KEY_COINMARKETCAP;
     const tokenSymbol = 'MEVFree';
     try {
@@ -34,5 +34,5 @@ const fetchTokenPriceDataCoinMarketcap = async () => {
 module.exports = {
     shortAddress: shortAddress,
     shortDate: shortDate,
-    fetchTokenPriceDataCoinMarketcap: fetchTokenPriceDataCoinMarketcap
+    fetchTokenData: fetchTokenData
 };

@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { Bot } = require("grammy");
-const { shortAddress, shortDate } = require("./utils/functions");
-
+const { shortAddress, shortDate, fetchTokenData } = require("./utils/functions");
 const { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } = require('recharts');
 
 const bot = new Bot(process.env.API_KEY_TELEGRAM_BOT);
@@ -46,7 +45,7 @@ bot.command("help", async (ctx: any) => {
 bot.command('price', async (ctx: any) => {
     try {
         // Fetch token price data from CoinMarketCap API
-        const [_, tokenPrice]: any = await fetchTokenPriceDataCoinMarketcap();
+        const [_, tokenPrice]: any = await fetchTokenData();
         await ctx.reply(`MEVFree Price: $${tokenPrice}`);
     }
     catch (error) {
@@ -58,7 +57,7 @@ bot.command('price', async (ctx: any) => {
 bot.command('info', async (ctx: any) => {
     try {
         // Fetch token price data from CoinMarketCap API
-        const [tokenData]: any = await fetchTokenPriceDataCoinMarketcap();
+        const [tokenData]: any = await fetchTokenData();
 
         // Format the token information as HTML
         const html: any = `
@@ -88,7 +87,7 @@ Date Added: <i>${shortDate(tokenData.date_added)}</i>
 bot.command('graph', async (ctx: any) => {
     try {
         // Fetch token price data from CoinMarketCap API
-        const tokenPriceData: any = await fetchTokenPriceDataCoinMarketcap();
+        const tokenPriceData: any = await fetchTokenData();
 
         // Prepare data for the chart
         const chartData: any = tokenPriceData.map((price: any, index: any) => ({
@@ -162,8 +161,6 @@ bot.command('graph', async (ctx: any) => {
         console.log(error);
     }
 });
-
-
 
 
 bot.start();
