@@ -33,6 +33,9 @@ bot.use(async (ctx: any, next: any) => {
 
 
 bot.on('message', async (ctx: any) => {
+    var currentDate = new Date();
+    var currentTime = currentDate.toLocaleString('en-US', { timeZone: 'America/New_York' });
+    console.log(`Event: ${ctx.message.text} (${currentTime})`)
     try {
         if (ctx.message.text === '/start') {
             const html: any = `
@@ -47,10 +50,11 @@ Enjoy your time...Thanks.
         else if (ctx.message.text === '/help') {
             const html: any = `
             <b>Commands:</b>\n
-<i>/info</i>: Display MEVFree's information.
-<i>/price</i>: Display MEVFree's price.
-<i>/graph</i>: Coming soon.
-<i>/help</i>: Display command instructions.
+<i><b>/start</b></i>: Start a bot.
+<i><b>/info</b></i>: Display MEVFree's information.
+<i><b>/price</b></i>: Display MEVFree's price.
+<i><b>/graph</b></i>: Coming soon.
+<i><b>/help</b></i>: Display command instructions.
           `;
 
             // Send the token information as HTML to the user

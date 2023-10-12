@@ -22,7 +22,7 @@ const fetchTokenData = async () => {
             }
         );
         const tokenData = response.data.data[tokenSymbol.toUpperCase()];
-        console.log("tokenData:", tokenData)
+        // console.log("tokenData:", tokenData)
         const tokenPrice = tokenData.quote.USD.price;
         return [tokenData, tokenPrice];
     }
