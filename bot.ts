@@ -85,6 +85,8 @@ Date Added: <i>${shortDate(tokenData.date_added)}</i>
             await ctx.reply(html, { parse_mode: "HTML" });
         }
         else if (ctx.message.text === '/graph') {
+            await ctx.reply(`Coming soon, please wait!`);
+
             const tokenPriceData: any = await fetchTokenData();
 
             // Prepare data for the chart
