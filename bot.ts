@@ -31,7 +31,6 @@ bot.use(async (ctx: any, next: any) => {
     await next();
 });
 
-
 bot.on('message', async (ctx: any) => {
     var currentDate = new Date();
     var currentTime = currentDate.toLocaleString('en-US', { timeZone: 'America/New_York' });
