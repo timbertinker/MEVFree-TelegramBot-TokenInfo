@@ -2,7 +2,6 @@ require('dotenv').config();
 const { Bot, session } = require("grammy");
 const { shortAddress, shortDate, fetchTokenData } = require("./utils/functions");
 const { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } = require('recharts');
-
 const bot = new Bot(process.env.API_KEY_TELEGRAM_BOT);
 
 // Handle the /start command.
